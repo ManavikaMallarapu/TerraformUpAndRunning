@@ -43,7 +43,7 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_route_table" "public_route_table" {
   vpc_id = "${aws_vpc.vpc.id}"
   route {
-    cidr_block = "10.0.0.0/16"
+    cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.igw.id}"
   }
   tags = {
@@ -95,13 +95,13 @@ resource "aws_security_group" "public_security_group" {
     from_port = 22
     to_port = 22
     protocol = "tcp"
-    cidr_blocks = ["10.0.0.0/24"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
     from_port = 27017
     to_port = 27017
     protocol = "tcp"
-    cidr_blocks = ["10.0.0.0/24"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
     from_port = 0
@@ -122,13 +122,13 @@ resource "aws_security_group" "private_security_group" {
     from_port = 22
     to_port = 22
     protocol = "tcp"
-    cidr_blocks = ["10.0.0.0/24"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
     from_port = 27017
     to_port = 27017
     protocol = "tcp"
-    cidr_blocks = ["10.0.0.0/24"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
     from_port = 0
